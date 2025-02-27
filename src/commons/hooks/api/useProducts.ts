@@ -12,7 +12,11 @@ const useProducts = () => {
 
   useEffect(() => {
     if (response) {
-      setProducts(response);
+      const productsWithPrice = response.map((product: Product) => ({
+        ...product,
+        price: product.price || product.title.charCodeAt(0),
+      }));
+      setProducts(productsWithPrice);
     }
   }, [response]);
 
