@@ -1,12 +1,12 @@
 import "./App.css";
+import ProductList from "./components/ProductList";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h1>Simple Online Store - UTP</h1>
-    </>
+    <div className="flex flex-wrap justify-center items-center gap-4">
+      <ProductList />
+    </div>
   );
-}
+};
 
 export default App;

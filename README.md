@@ -48,3 +48,9 @@ export default tseslint.config({
   },
 })
 ```
+
+### Referencia de la API
+
+Los componentes utilizan datos de la [Fake Store API](https://fakestoreapi.com/docs). La Fake Store API es una API RESTful que proporciona datos ficticios de productos, incluyendo imágenes, descripciones, precios y más. Es útil para pruebas y desarrollo de aplicaciones de comercio electrónico.
+
+Para más información y documentación detallada sobre cómo utilizar la Fake Store API, puedes visitar [Fake Store API Docs](https://fakestoreapi.com/docs).
