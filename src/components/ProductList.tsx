@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Spin } from "antd";
 
 import { Product } from "../commons/interfaces/product";
 import useProducts from "../commons/hooks/api/useProducts";
@@ -19,22 +20,37 @@ const ProductList: React.FC<ProductListProps> = ({
   const { products, error, loading } = useProducts();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
 
-  const showModal = (product: Product) => {
-    setSelectedProduct(product);
+  const handleShowModal = (productId: number) => {
+    setSelectedProductId(productId);
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleAddProductToCart = (productId: number) => {
+    const product = findProductById(productId);
+    if (product) {
+      onAddToCart(product);
+    }
     setIsModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const findProductById = (productId: number) => {
+    return products.find((product) => product.id === productId);
+  };
+
+  const handleCloseModal = () => {
     setIsModalVisible(false);
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -44,7 +60,7 @@ const ProductList: React.FC<ProductListProps> = ({
           <div key={product.id}>
             <ProductCard
               product={product}
-              onClickPreview={() => showModal(product)}
+              onClickPreview={() => handleShowModal(product.id)}
               onAddToCart={() => onAddToCart(product)}
               onRemoveFromCart={() => onRemoveFromCart(product.id)}
               isInCart={!!cart.find((item) => item.id === product.id)}
@@ -52,12 +68,15 @@ const ProductList: React.FC<ProductListProps> = ({
           </div>
         ))}
       </div>
-      <ProductPreviewModal
-        product={selectedProduct}
-        isVisible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      />
+      {selectedProductId && (
+        <ProductPreviewModal
+          productId={selectedProductId}
+          isVisible={isModalVisible}
+          onAddToCart={() => handleAddProductToCart(selectedProductId)}
+          onCancel={handleCloseModal}
+          cart={cart}
+        />
+      )}
     </div>
   );
 };

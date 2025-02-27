@@ -16,10 +16,11 @@ const useAxios = ({
 }: UseAxiosProps) => {
   const [response, setResponse] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const result = await axios({
           method,

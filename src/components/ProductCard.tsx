@@ -52,9 +52,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <h2 className="text-xl font-semibold mb-2 text-left">
           {product.title}
         </h2>
-        <div className="text-gray-700 w-full text-left max-h-24 overflow-y-auto">
-          {product.description}
-        </div>
       </div>
       <div className="absolute top-4 right-4">
         <span className="text-lg font-bold text-gray-800 bg-red-100 rounded p-1">
