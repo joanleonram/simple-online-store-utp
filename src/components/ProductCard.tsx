@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { EyeOutlined } from "@ant-design/icons";
+
 import Button from "./Button/Button";
-import { Icon } from "./Icon/Icon";
 import { Product } from "../commons/interfaces/product";
 
 interface ProductCardProps {
   product: Product;
   onClickPreview?: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
+  onRemoveFromCart?: (product: Product) => void;
+  isInCart?: boolean;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onClickPreview,
+  onAddToCart,
+  onRemoveFromCart,
+  isInCart = false,
 }) => {
+  const [isAdded, setIsAdded] = useState(isInCart);
+
+  useEffect(() => {
+    setIsAdded(isInCart);
+  }, [isInCart]);
+
+  const handleAdd = () => {
+    if (!isAdded) {
+      setIsAdded(true);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      onAddToCart && onAddToCart(product);
+    }
+  };
+
+  const handleRemove = () => {
+    if (isAdded) {
+      setIsAdded(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      onRemoveFromCart && onRemoveFromCart(product);
+    }
+  };
+
   return (
     <div className="border rounded-lg overflow-hidden w-72 flex flex-col relative p-2">
       <img
@@ -37,9 +66,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
           variant="dashed"
           onClick={() => onClickPreview && onClickPreview(product)}
         >
-          <Icon size={18} name="EyeIcon" /> Vista previa
+          <EyeOutlined className="text-2xl" /> Vista previa
         </Button>
-        <Button variant="primary">Agregar</Button>
+        {isAdded ? (
+          <Button variant="link" danger onClick={handleRemove}>
+            Eliminar
+          </Button>
+        ) : (
+          <Button variant="primary" onClick={handleAdd}>
+            Agregar
+          </Button>
+        )}
       </div>
     </div>
   );

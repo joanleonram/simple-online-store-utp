@@ -18,7 +18,6 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({
 }) => {
   return (
     <Modal
-      //   title="Vista previa del producto"
       open={isVisible}
       onOk={onOk}
       onCancel={onCancel}
