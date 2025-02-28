@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { EyeOutlined } from "@ant-design/icons";
 
-import { Product } from "../commons/interfaces/product";
-import Button from "./Button/Button";
-import ConfirmModal from "./ConfirmModal/ConfirmModal";
+import { Product } from "../../../commons/interfaces/product";
+import Button from "../../ui-system/Button/Button";
+import ConfirmModal from "../../ui-system/ConfirmModal/ConfirmModal";
 
 interface ProductCardProps {
   product: Product;
@@ -71,7 +71,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </h2>
       </div>
       <div className="absolute top-4 right-4">
-        <span className="text-lg font-bold text-gray-800 bg-red-100 rounded p-1">
+        <span className="text-lg font-bold text-gray-800 bg-green-300 rounded p-1">
           S/{product.price}
         </span>
       </div>

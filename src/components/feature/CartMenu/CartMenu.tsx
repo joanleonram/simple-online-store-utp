@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Menu, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-import { Product } from "../../commons/interfaces/product";
-import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import { Product } from "../../../commons/interfaces/product";
+import ConfirmModal from "../../ui-system/ConfirmModal/ConfirmModal";
 
 interface CartMenuProps {
   cart: Product[];

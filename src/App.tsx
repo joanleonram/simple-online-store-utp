@@ -1,6 +1,6 @@
 import "./App.css";
-import ProductList from "./components/ProductList";
-import Navbar from "./components/Navbar/Navbar";
+import ProductList from "./containers/ProductList/ProductList";
+import Navbar from "./components/feature/Navbar/Navbar";
 import useCart from "./commons/hooks/feature/useCart";
 
 const App: React.FC = () => {

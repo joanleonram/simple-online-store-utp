@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from "react";
-import cartReducer from "../../reducers/cartReducer";
+import cartReducer from "../../store/cartReducer";
 import { Product } from "../../interfaces/product";
-import useBrowserStorage from "./useBrowserStorage";
+import useBrowserStorage from "../utils/useBrowserStorage";
 
 const useCart = () => {
   const [cart, setCart] = useBrowserStorage<Product[]>(

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Spin } from "antd";
 
-import { Product } from "../commons/interfaces/product";
-import useSingleProduct from "../commons/hooks/api/useSingleProduct";
-import ConfirmModal from "./ConfirmModal/ConfirmModal";
+import { Product } from "../../commons/interfaces/product";
+import useSingleProduct from "../../commons/hooks/api/products/useSingleProduct";
+import ConfirmModal from "../../components/ui-system/ConfirmModal/ConfirmModal";
 
 interface ProductPreviewModalProps {
   productId: number;
@@ -69,10 +69,10 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({
                 <h2 className="text-xl font-semibold mb-2 text-left">
                   {product.title}
                 </h2>
-                <p className="text-gray-700 w-full text-left">
+                <p className="text-gray-700 w-full text-left mb-4">
                   {product.description}
                 </p>
-                <span className="text-lg font-bold text-gray-800 bg-red-100 rounded p-1">
+                <span className="text-lg font-bold text-gray-800 bg-green-300 rounded p-1">
                   S/{product.price}
                 </span>
               </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import useAxios from "../axios/useAxios";
-import { Product } from "../../interfaces/product";
+import useAxios from "../../axios/useAxios";
+import { Product } from "../../../interfaces/product";
 
 const useSingleProduct = (productId: number) => {
   const { response, error, loading } = useAxios({

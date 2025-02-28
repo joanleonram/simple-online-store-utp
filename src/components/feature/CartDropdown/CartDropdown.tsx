@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
-import { Product } from "../../commons/interfaces/product";
+import { Product } from "../../../commons/interfaces/product";
 import CartMenu from "../CartMenu/CartMenu";
 
 interface CartDropdownProps {

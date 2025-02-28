@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Product } from "../../commons/interfaces/product";
+import { Product } from "../../../commons/interfaces/product";
 import CartDropdown from "../CartDropdown/CartDropdown";
 
 interface NavbarProps {

@@ -1,5 +1,5 @@
 import { Product } from "../interfaces/product";
-import { CartAction } from "../types/types";
+import { CartAction } from "../types/cart";
 
 const cartReducer = (state: Product[], action: CartAction): Product[] => {
   switch (action.type) {

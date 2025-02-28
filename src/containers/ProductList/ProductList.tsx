@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Spin } from "antd";
 
-import { Product } from "../commons/interfaces/product";
-import useProducts from "../commons/hooks/api/useProducts";
-import ProductPreviewModal from "./ProductPreviewModal";
-import ProductCard from "./ProductCard";
+import { Product } from "../../commons/interfaces/product";
+import useProducts from "../../commons/hooks/api/products/useProducts";
+import ProductCard from "../../components/feature/ProductCard/ProductCard";
+import ProductPreviewModal from "../ProductPreviewModal/ProductPreviewModal";
 
 interface ProductListProps {
   onAddToCart: (product: Product) => void;

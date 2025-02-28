@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { StorageType } from "../../types/types";
+
+import { StorageType } from "../../types/storage";
 
 const useBrowserStorage = <T>(
   key: string,

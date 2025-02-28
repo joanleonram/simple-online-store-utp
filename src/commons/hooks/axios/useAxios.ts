@@ -29,7 +29,7 @@ const useAxios = ({
           headers,
         });
         setResponse(result.data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);
