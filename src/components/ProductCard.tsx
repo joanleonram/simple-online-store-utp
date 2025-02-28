@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { EyeOutlined } from "@ant-design/icons";
 
-import Button from "./Button/Button";
 import { Product } from "../commons/interfaces/product";
+import Button from "./Button/Button";
+import ConfirmModal from "./ConfirmModal/ConfirmModal";
 
 interface ProductCardProps {
   product: Product;
@@ -20,25 +21,41 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isInCart = false,
 }) => {
   const [isAdded, setIsAdded] = useState(isInCart);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
+  const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
 
   useEffect(() => {
     setIsAdded(isInCart);
   }, [isInCart]);
 
   const handleAdd = () => {
-    if (!isAdded) {
-      setIsAdded(true);
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      onAddToCart && onAddToCart(product);
-    }
+    setIsAddModalVisible(true);
+  };
+
+  const handleConfirmAdd = () => {
+    setIsAdded(true);
+    setIsAddModalVisible(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    onAddToCart && onAddToCart(product);
+  };
+
+  const handleCancelAdd = () => {
+    setIsAddModalVisible(false);
   };
 
   const handleRemove = () => {
-    if (isAdded) {
-      setIsAdded(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      onRemoveFromCart && onRemoveFromCart(product);
-    }
+    setIsRemoveModalVisible(true);
+  };
+
+  const handleConfirmRemove = () => {
+    setIsAdded(false);
+    setIsRemoveModalVisible(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    onRemoveFromCart && onRemoveFromCart(product);
+  };
+
+  const handleCancelRemove = () => {
+    setIsRemoveModalVisible(false);
   };
 
   return (
@@ -75,6 +92,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </Button>
         )}
       </div>
+      <ConfirmModal
+        visible={isAddModalVisible}
+        onConfirm={handleConfirmAdd}
+        onCancel={handleCancelAdd}
+        title="Agregar al carrito"
+        content="¿Estás seguro de que deseas agregar este producto al carrito?"
+        okText="Agregar"
+        cancelText="Cancelar"
+      />
+      <ConfirmModal
+        visible={isRemoveModalVisible}
+        onConfirm={handleConfirmRemove}
+        onCancel={handleCancelRemove}
+        title="Remover del carrito"
+        content="¿Estás seguro de que deseas remover este producto del carrito?"
+        okText="Eliminar"
+        cancelText="Cancelar"
+      />
     </div>
   );
 };
