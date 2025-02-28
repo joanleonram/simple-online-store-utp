@@ -55,7 +55,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center items-center gap-4 mt-16">
+      <div className="flex flex-wrap justify-center items-center gap-4 mt-24">
         {products.map((product: Product) => (
           <div key={product.id}>
             <ProductCard

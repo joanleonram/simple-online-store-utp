@@ -24,10 +24,15 @@ const useCart = () => {
     setCart(state);
   }, [state, setCart]);
 
+  const cartCount = state.length;
+  const totalAmount = state.reduce((total, product) => total + product.price, 0);
+
   return {
     cart: state,
     addToCart,
     removeFromCart,
+    cartCount,
+    totalAmount,
   };
 };
 

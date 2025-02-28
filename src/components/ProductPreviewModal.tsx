@@ -46,7 +46,7 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-96 object-cover"
+              className="w-full h-auto max-h-96 object-contain"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2 text-left">
