@@ -20,6 +20,10 @@ const useCart = () => {
     dispatch({ type: "REMOVE_FROM_CART", productId });
   };
 
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+
   useEffect(() => {
     setCart(state);
   }, [state, setCart]);
@@ -31,6 +35,7 @@ const useCart = () => {
     cart: state,
     addToCart,
     removeFromCart,
+    clearCart,
     cartCount,
     totalAmount,
   };
